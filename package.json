@@ -1,0 +1,28 @@
+{
+  "name": "@chamie/re-call",
+  "version": "1.0.3",
+  "description": "A tiny library that memoizes invocations, not functions — so you can memoize calls to functions you don’t own.",
+  "keywords": [
+    "memo",
+    "memoize",
+    "weakmap"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/chamie/re-call",
+  "author": "Chamie",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "fast-deep-equal": "^3.1.3"
+  }
+}
