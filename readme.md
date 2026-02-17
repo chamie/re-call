@@ -40,6 +40,23 @@ reCall(expensiveCalculation, [2, 3]); // Logs: "Computing...", returns 5
 
 ### Memoization Functions
 
+#### `shallow(fn, params?, options?)` (default export)
+
+Caches based on **shallow equality**. Compares array length and each element with `===`.
+
+```typescript
+import { shallow } from '@chamie/re-call';
+// or
+import shallow from '@chamie/re-call';
+
+shallow(testFn, [1, 2]); // Function executed
+shallow(testFn, [1, 2]); // Result from cache ✓
+shallow(testFn, [2, 3]); // Function executed
+
+shallow(testFn, [1, [1, 2]]); // Function executed
+shallow(testFn, [1, [1, 2]]); // Function executed (nested array is different reference)
+```
+
 #### `byRef(fn, params?, options?)`
 
 Caches based on **reference equality** (`Object.is`). Only returns cached result if the *exact same* parameter array is passed.
@@ -58,23 +75,6 @@ byRef(testFn, [1, 2]); // Function executed (new array reference)
 const array = [1, 2];
 byRef(testFn, array); // Function executed
 byRef(testFn, array); // Result from cache ✓
-```
-
-#### `shallow(fn, params?, options?)` (default export)
-
-Caches based on **shallow equality**. Compares array length and each element with `===`.
-
-```typescript
-import { shallow } from '@chamie/re-call';
-// or
-import shallow from '@chamie/re-call';
-
-shallow(testFn, [1, 2]); // Function executed
-shallow(testFn, [1, 2]); // Result from cache ✓
-shallow(testFn, [2, 3]); // Function executed
-
-shallow(testFn, [1, [1, 2]]); // Function executed
-shallow(testFn, [1, [1, 2]]); // Function executed (nested array is different reference)
 ```
 
 #### `deep(fn, params?, options?)`
@@ -297,5 +297,6 @@ const result = shallow(add, [1, 2]); // result: number
 MIT
 
 ## Repository
+
 
 https://github.com/chamie/re-call
