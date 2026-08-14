@@ -10,6 +10,7 @@ Traditional memoization wraps a function to cache its results. But what if you d
 
 **re-call** memoizes the *invocation* itself, not the function. This means you can:
 
+- ✅ Memoize functions you're receiving as parameters
 - ✅ Memoize third-party functions without wrapping them
 - ✅ Use different caching strategies for the same function in different places
 - ✅ Cache method calls with proper `this` context
